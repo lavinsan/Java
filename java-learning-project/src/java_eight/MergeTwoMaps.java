@@ -7,7 +7,11 @@ import java.util.stream.Stream;
 
 /**
  * @author Vinod Lakhani
- *
+ *         1- toMap(keyMapper<Function>, valueMapper<Function>)
+ *         2- toMap(keyMapper<Function>, valueMapper<Function>,
+ *         mergeFunction<BinaryOperator>)
+ *         3- toMap(keyMapper<Function>, valueMapper<Function>,
+ *         mergeFunction<BinaryOperator>, mapSupplier<Supplier>)
  */
 public class MergeTwoMaps {
 	private static Map<Integer, String> map1 = new HashMap<>();
@@ -36,46 +40,28 @@ public class MergeTwoMaps {
 	// This method will create new map but we can't find duplicates keys value
 	// It will replace new value if duplicate key is found
 	private static void streamPutAll() {
+		System.out.println("streamPutAll");
 		Map<Integer, String> map3 = new HashMap<>(map1);
 		map3.putAll(map2);
 		map3.entrySet()
 			.forEach(System.out::println);
-
-		/*
-		 * java 9
-		 * Map<Integer, String> map4 =
-		 * EntryStream .of(map1)
-		 * .append(EntryStream.of(map2))
-		 * .toMap((e1, e2) -> e1);
-		 */
 	}
-
-	/*
-	 * 1- toMap(keyMapper<Function>, valueMapper<Function>)
-	 * 
-	 * 2- toMap(keyMapper<Function>, valueMapper<Function>,
-	 * mergeFunction<BinaryOperator>)
-	 * 
-	 * 3- toMap(keyMapper<Function>, valueMapper<Function>,
-	 * mergeFunction<BinaryOperator>, mapSupplier<Supplier>)
-	 * 
-	 */
 
 	/*
 	 * toMap method with 4 Arguments
 	 * keyMapper a mapping function to produce keys
-	 * 
 	 * valueMapper a mapping function to produce values
-	 * 
 	 * mergeFunction used to resolve collisions between values associated with
 	 * the same key, as supplied to Map.merge(Object, Object, BiFunction)
-	 * 
+	 * we have to decide which value we want old value or new value
 	 * mapSupplier a function which returns a new, empty Map into which the
 	 * results will be inserted
+	 * as we are not passing empty map so both map are merge here
 	 * 
 	 */
 	private static void streamMerge() {
-		Map<Integer, String> map3 =
+		System.out.println("streamMerge");
+		HashMap<Integer, String> map3 =
 			map2.entrySet()
 				.stream()
 				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
@@ -85,7 +71,7 @@ public class MergeTwoMaps {
 	}
 
 	/*
-	 * Using Stream of method giving both maps
+	 * Using Stream of method giving both maps to this method
 	 * converts each map into an entry set --map(map -> map.entrySet())
 	 * converts each set into an entry stream --.flatMap(map -> map.stream())
 	 * we can combine both step --flatMap(map -> map.entrySet().stream())
@@ -97,6 +83,7 @@ public class MergeTwoMaps {
 	 * associated with the same key
 	 */
 	private static void streamOf() {
+		System.out.println("streamOf");
 		Map<Integer, String> map3 =
 			Stream	.of(map1, map2)
 					.map(map -> map.entrySet())
@@ -114,6 +101,7 @@ public class MergeTwoMaps {
 	 * then rest is same like stream of method
 	 */
 	private static void streamConcat() {
+		System.out.println("streamConcat");
 		Map<Integer, String> map3 =
 			Stream	.concat(map1.entrySet()
 								.stream(),
@@ -138,9 +126,33 @@ public class MergeTwoMaps {
 	 * remappingFunction the function to recompute a value if present
 	 */
 	private static void mergeFunction() {
+		System.out.println("mergeFunction");
 		Map<Integer, String> map3 = new HashMap<>(map1);
 		map2.forEach((k, v) -> map3.merge(k, v, (a, b) -> a + " -- " + b));
 		map3.entrySet()
 			.forEach(System.out::println);
 	}
 }
+
+/*
+ * ToMap -- 4 Arguments
+ * 
+ * Convert a Map into a Stream
+ * Sort it
+ * Collect and return a new LinkedHashMap (keep the order)
+ * 
+ * Map result = map.entrySet().stream()
+ * .sorted(Map.Entry.comparingByKey())
+ * .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+ * (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+ * 
+ * 
+ */
+
+/*
+ * java 9
+ * Map<Integer, String> map4 =
+ * EntryStream .of(map1)
+ * .append(EntryStream.of(map2))
+ * .toMap((e1, e2) -> e1);
+ */

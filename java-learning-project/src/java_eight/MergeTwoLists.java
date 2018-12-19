@@ -10,7 +10,7 @@ import java.util.stream.Stream;
  * @author Vinod Lakhani
  *
  */
-public class MergeTwoListIntoNewList {
+public class MergeTwoLists {
 	private static List<String> list1 = new ArrayList<>();
 	private static List<String> list2 = new ArrayList<>();
 

@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  * @author Vinod Lakhani
- *
  */
 public class Item {
 
@@ -26,13 +25,19 @@ public class Item {
 
 	public static List<Item> createItemList() {
 		return Arrays.asList(new Item("apple", 10, new BigDecimal("9.99")),
-				new Item("banana", 20, new BigDecimal("19.99")),
-				new Item("orange", 10, new BigDecimal("29.99")),
-				new Item("papaya", 20, new BigDecimal("9.99")),
-				new Item("apple", 10, new BigDecimal("9.99")),
-				new Item("orange", 10, new BigDecimal("29.99")),
-				new Item("banana", 10, new BigDecimal("19.99")),
-				new Item("apple", 20, new BigDecimal("9.99")));
+			new Item("banana", 20, new BigDecimal("19.99")),
+			new Item("orange", 10, new BigDecimal("29.99")),
+			new Item("papaya", 20, new BigDecimal("39.99")),
+			new Item("apple", 10, new BigDecimal("9.99")),
+			new Item("orange", 10, new BigDecimal("29.99")),
+			new Item("orange", 10, new BigDecimal("29.99")),
+			new Item("banana", 10, new BigDecimal("19.99")),
+			new Item("apple", 20, new BigDecimal("9.99")),
+			new Item("orange", 10, new BigDecimal("29.99")),
+			new Item("banana", 10, new BigDecimal("19.99")),
+			new Item("apple", 20, new BigDecimal("9.99")),
+			new Item("banana", 10, new BigDecimal("19.99")),
+			new Item("apple", 20, new BigDecimal("9.99")));
 	}
 
 	public String getFruit() {
@@ -53,8 +58,7 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Item [fruit=" + fruit + ", quantity=" + quantity + ", price=" + price
-				+ "]";
+		return "Item [fruit=" + fruit + ", quantity=" + quantity + ", price=" + price + "]";
 	}
 
 	public Integer getQuantity() {
