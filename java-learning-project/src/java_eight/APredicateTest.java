@@ -5,7 +5,6 @@ import java.util.function.Predicate;
 
 /**
  * @author Vinod Lakhani
- * 
  *         Predicate -> Used for conditional checks
  *         Predicate<T> -> Take input and return Boolean
  *         BiPredicate<T,U> -> Take two input and return Boolean
@@ -77,4 +76,26 @@ public class APredicateTest {
  * return (null == targetRef)
  * ? Objects::isNull
  * : object -> targetRef.equals(object);}
+ * 
+ * public class PredicateFunctionExample{
+ * public static void main(String args[]){
+ * Predicate<Integer> positive = i -> i > 0;
+ * List<Integer> integerList = Arrays.asList(
+ * new Integer(1),new Integer(10),
+ * new Integer(200),new Integer(101),
+ * new Integer(-10),new Integer(0));
+ * List<Integer> filteredList = filterList(integerList, positive);
+ * filteredList.forEach(System.out::println);
+ * }
+ * public static List<Integer> filterList(List<Integer> listOfIntegers,
+ * Predicate<Integer> predicate){
+ * List<Integer> filteredList = new ArrayList<Integer>();
+ * for(Integer integer:listOfIntegers){
+ * if(predicate.test(integer)){
+ * filteredList.add(integer);
+ * }
+ * }
+ * return filteredList;
+ * }
+ * }
  */

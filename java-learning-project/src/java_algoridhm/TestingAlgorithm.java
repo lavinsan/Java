@@ -15,7 +15,7 @@ public class TestingAlgorithm {
 		// Used Insertion Sort
 		array = InsertionSort.insertSort(array);
 		
-		// Used Bubble Sort
+		//Used Bubble Sort
 		//array = BubbleSort.bubbleSort(array);
 		
 		// Used Merge Sort

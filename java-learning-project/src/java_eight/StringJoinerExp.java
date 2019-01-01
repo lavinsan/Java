@@ -1,10 +1,12 @@
 package java_eight;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 /**
  * @author Vinod Lakhani
- *
  */
 public class StringJoinerExp {
 
@@ -42,10 +44,21 @@ public class StringJoinerExp {
 		names5.add("vinod");
 		names5.add("lavina");
 		System.out.println(names5);
-		
+
 		// length method to find the length of a string
 		System.out.println(names5.length());
-		
+
+		// join method take iterable or char sequence
+		List<String> asList = Arrays.asList("vinod", "mohini", "lavina", "deepa");
+		String join = String.join("|", asList);
+		System.out.println(join);
+		System.out.println();
+
+		// joining method join the list with delimeter
+		String collect =
+			asList	.stream()
+					.collect(Collectors.joining("!"));
+		System.out.println(collect);
 
 	}
 }

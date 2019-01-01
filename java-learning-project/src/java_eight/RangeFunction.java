@@ -1,10 +1,10 @@
 package java_eight;
 
+import java.util.Random;
 import java.util.stream.IntStream;
 
 /**
  * @author Vinod Lakhani
- *
  */
 public class RangeFunction {
 
@@ -37,5 +37,27 @@ public class RangeFunction {
 									.parallel()
 									.sum());
 		System.out.println();
+
+		// ints method takes 3 arguments
+		// 1-- size 2-- starting(inclusive) 3-- ending(exclusive)
+		new Random().ints(5, 20, 25)
+					.forEach(System.out::println);
+		System.out.println();
+
+		// ints method takes 2 arguments
+		// 1-- starting(inclusive) 2-- ending(exclusive)
+		// limit is same as size
+		new Random().ints(10, 15)
+					.limit(5)
+					.forEach(System.out::println);
+		System.out.println();
+
+		// to get value as int we use findfirst and getasint
+		int asInt =
+			new Random().ints(10, 15)
+						.limit(1)
+						.findFirst()
+						.getAsInt();
+		System.out.println(asInt);
 	}
 }

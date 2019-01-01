@@ -16,7 +16,7 @@ public class ArrayUtility {
 	public static int[] createArray() {
 		int[] array = new int[10];
 		for (int i = 0; i < array.length; i++) {
-			array[i] = (int) (Math.random() * 10) + 10;
+			array[i] = (int) (Math.random() * 100) + 10;
 		}
 		System.out.print(" Unsorted Array List ---> ");
 		return array;
