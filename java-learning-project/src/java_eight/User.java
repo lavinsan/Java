@@ -16,12 +16,12 @@ public class User {
 	private List<Integer> phone;
 
 	public static List<User> createUser() {
-		return Arrays.asList(new User(1, "vinod", 45, new BigDecimal(50000), Arrays.asList(1, 2)),
-			new User(2, "deepa", 42, new BigDecimal(50000), Arrays.asList(3, 4, 5)),
-			new User(3, "lavina", 16, new BigDecimal(50000), Arrays.asList(6)),
-			new User(4, "lavina", 17, new BigDecimal(50000), Arrays.asList(6)),
+		return Arrays.asList(new User(1, "vinod", 45, new BigDecimal(80000), Arrays.asList(1, 2)),
+			new User(2, "deepa", 42, new BigDecimal(60000), Arrays.asList(3, 4, 5)),
+			new User(3, "alisha", 16, null, Arrays.asList(6)),
+			new User(4, "lavina", 16, new BigDecimal(70000), Arrays.asList(6)),
 			new User(5, "karan", 21, new BigDecimal(50000), Arrays.asList(9)),
-			new User(6, "mohini", 70, new BigDecimal(50000), Arrays.asList(7, 8)));
+			new User(6, "Arjun", 21, new BigDecimal(60000), Arrays.asList(7, 8)));
 	}
 
 	public User() {
