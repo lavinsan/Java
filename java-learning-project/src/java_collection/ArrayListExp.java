@@ -9,13 +9,13 @@ import java.util.Vector;
 
 /**
  * @author Vinod Lakhani
- *
  */
 public class ArrayListExp {
 
 	public static void main(String[] args) {
 
 		List<String> list = new ArrayList<>();
+		
 		list.add("vinod");
 		list.add("Deepa");
 		list.add("lavina");
@@ -63,9 +63,9 @@ public class ArrayListExp {
 									.getName());
 		System.out.println(listIterator	.getClass()
 										.getName());
+		
 		while (listIterator.hasPrevious()) {
 			System.out.println(listIterator.previous());
-
 			listIterator.remove();
 		}
 	}
